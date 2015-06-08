@@ -1,6 +1,7 @@
 <?php
+
 class operation extends config{
-	private $table_name = "diary";
+	private $table_name;
 	private $line_name;
 	private $user_name;
 	private $value;
@@ -42,20 +43,21 @@ class operation extends config{
 
 	//SQL 查 根据用户名 一些情况下，调用分页类取代这个
 	private function select(){
-		$table_name = $this->table_name;
-		$user_name = $this->user_name;
-		$sql = "SELECT * from $table_name where user_name = $user_name";
-		$res = $this->LINK()->prepare($sql);
-		$res -> execute();
-		 $all = $res->fetchAll(PDO::FETCH_ASSOC);
+		 $table_name = $this->table_name;
+		 $user_name = $this->user_name;
+		 $sql = "SELECT * from $table_name where user_name = '$user_name'";
+		 $res = $this->LINK()->prepare($sql);
+		 $res -> execute();
+		 return $res->fetchAll(PDO::FETCH_ASSOC);
 	}
-	public function show($values){
+	public function forshow($values){
 		switch ($values){
 		case 1: $this->add();break;
 		case 2: $this->delete();break;
 		case 3: $this->update();break;
-		case 4: $this->select();break;
+		case 4: return $this->select();
 	}
 	}
 }
 ?>
+	

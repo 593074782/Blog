@@ -1,8 +1,23 @@
 <?php
 	/* 分页 */ //自带删除功能
-require "connect.php";
+//require "connect.php";
+class connect{
+	private $mysql='mysql:host=localhost;dbname=blog';
+	private $user = 'root';
+	private $password = '';
+	
+	private function config(){
+		$LINK= new PDO($this->mysql,$this->user,$this->password);
+		$LINK-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		$LINK-> exec("set names utf8");
+		return $LINK;
+	}
+	public function LINK(){
+		return $this->config();
+	}
+}
 
-class Paging extends config{
+class Paging extends connect{
 	private $user_name;
 	private $page; 			//分页数量
 	private $num=5;			//每页5条数据
@@ -24,11 +39,12 @@ class Paging extends config{
 		$page = $this->page;
 		$user_name=$this->user_name;
 		$table_name = $this->table_name;
-		$sql="SELECT ID from $table_name where user_name ='$user_name' ";			//查询数据的总数total
+		$sql="SELECT count(*) from $table_name where user_name ='$user_name' ";			//查询数据的总数total
 		$res = $this->LINK()->prepare($sql);
 		$res->execute();
 		$total = $res->fetchAll(PDO::FETCH_ASSOC);
-		$pagenum=ceil(count($total)/$this->num);			//获得总页数 pagenum
+		$s2=implode('',$total[0]);
+		$pagenum=ceil($s2/$this->num);			//获得总页数 pagenum
 		//假如传入的页数参数apge 大于总页数 pagenum，则显示错误信息
 		if($page>$pagenum || $page == 0){
 	       echo "Error : Can not found the page!";
@@ -80,17 +96,17 @@ class Paging extends config{
 		echo "<a href='".$url."?page=".($i-1)."'>末页</a>"."</div>";
 	}
 }
-/*
-*这些话应放在Controller
-*这句话是获取Page数，如果不存在，那么页数就是1。
+
+//*这些话应放在Controller
+//*这句话是获取Page数，如果不存在，那么页数就是1。
 
 $page=isset($_GET['page'])?intval($_GET['page']):1; 
-$table_name = 'blog';
-$list = 'blog_header';
-$url = 'Paging.php';
-
+$user_name = 'caicaibi';
+$table_name = 'diary';
+$list = 'diary_title';
+$url = $_SERVER['PHP_SELF'];
 //实例化 show()里面的东西可以直接放到view里面
-$output = new Paging($table_name,$list,$page,$url);
+$output = new Paging($user_name,$table_name,$list,$page,$url);
 $output->show();
-*/
+
 ?>

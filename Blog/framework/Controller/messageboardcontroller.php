@@ -1,8 +1,8 @@
 <?php
-require(dirname(dirname(dirname(__FILE__))).'/config/config.php');
-require(dirname(dirname(__FILE__)).'/Model/mysql.php');
-require(dirname(dirname(__FILE__)).'/Model/paging.php');
-class controller{
+require_once(dirname(dirname(dirname(__FILE__))).'/config/config.php');
+require_once(dirname(dirname(__FILE__)).'/Model/mysql.php');
+require_once(dirname(dirname(__FILE__)).'/Model/paging.php');
+class messageboardcontroller{
 	private $user_name;
 	public function __construct($user_name){
 		$this->user_name = $user_name;
@@ -15,7 +15,7 @@ class controller{
 		$list = 'message';
 		$url = 'messageboard.php';
 		$output = new Paging($user_name,$table_name,$list,$page,$url);
-		$output->show();		
+		$output->forshow();		
 	}
 
 	//留言
@@ -44,7 +44,7 @@ class controller{
 }
 //ini_set("display_errors","Off");
 $user_name="caicaibi";
-$test= new controller($user_name);
+$test= new messageboardcontroller($user_name);
 if($_GET['num']==""){
 	$test->operation(1);
 }else{

@@ -6,9 +6,9 @@
 </head>
 <body>
 	<div class="title">
-		<button onclick="allshow()">返回主界面</button>	
-		<button onclick="forshow(home)">home</button>
-		<button onclick="forshow(diary)">diary</button>
+		<a href="">返回主界面</a>	
+		<a>home</button>
+		<a href="../../Controller/diarycontroller.php">diary</a>
 		<button onclick="forshow(messageboard)">messageboard</button>
 		<button onclick="forshow(album)">album</button>
 		<button onclick="forshow(aboutme)">aboutme</button>

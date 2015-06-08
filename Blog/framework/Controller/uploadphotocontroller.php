@@ -1,7 +1,7 @@
 <?php
-require(dirname(dirname(dirname(__FILE__))).'/config/config.php');
-require(dirname(dirname(__FILE__)).'/Model/mysql.php');
-class controller extends config{
+require_once(dirname(dirname(dirname(__FILE__))).'/config/config.php');
+require_once(dirname(dirname(__FILE__)).'/Model/mysql.php');
+class uploadphotocontroller extends config{
 	private $user_name;//用户名
 	private $table_name;//表名
 	private $list_name;//列名
@@ -94,9 +94,10 @@ class controller extends config{
 		}
 	}
 }
+//ini_set("display_errors","Off");
 $num=$_GET['num'];
 $user_name="caicaibi";
 $file = $_FILES['upfile'];
-$test=new controller($user_name);
+$test=new uploadphotocontroller($user_name);
 $test->operation($num,$file);
 ?>

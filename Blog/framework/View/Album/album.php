@@ -1,7 +1,6 @@
 <?php
 		//相册动态化
 
-
 //按照flash规定的格式来写xml
 $head = '<?xml version="1.0" encoding="utf-8"?> <thumbnails>';	//xml固定的头
 $foot = '</thumbnails>';	//xml固定的尾部

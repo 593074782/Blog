@@ -1,9 +1,9 @@
 <?php
-require(dirname(dirname(dirname(__FILE__))).'/config/config.php');
-require(dirname(dirname(__FILE__)).'/Model/mysql.php');
-require(dirname(dirname(__FILE__)).'/Model/paging.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/config/config.php');
+require_once(dirname(dirname(__FILE__)).'/Model/mysql.php');
+require_once(dirname(dirname(__FILE__)).'/Model/paging.php');
 
-class controller{
+class diarycontroller{
 	private $user_name;
 
 	public function __construct($user_name){
@@ -23,7 +23,7 @@ class controller{
 		$line_name='user_name,diary_label,diary_title,diary_brief,diary_con,diary_time';
 		$table_name='diary';
 		$diary = new operation($user_name,$value,$line_name,$table_name,null);
-		$diary->show(1);
+		$diary->forshow(1);
 	}
 
 	//删除日志
@@ -32,7 +32,7 @@ class controller{
 		$user_name = $this->user_name;
 		$value = $_GET['ID'];
 		$diary = new operation($user_name,$value,null,$table_name,null);
-		$diary->show(2);
+		$diary->forshow(2);
 	}
 
 	//改日志
@@ -46,7 +46,7 @@ class controller{
 		$time = date("Y.m.d.h:i:sa");
 		$value="'$user_name','$diary_label','$diary_title','$diary_brief','$diary_con','$time'";
 		$diary = new operation($user_name,$value,$time);
-		$diary->show(1);
+		$diary->forshow(1);
 	}
 	
 	//查看日志
@@ -69,16 +69,16 @@ class controller{
 			case 1: $this->towrite();$this->show();break;
 			case 2: $this->todelete();$this->show();break;
 			case 3: $this->toinsert();$this->show();break;
-			case 4:$this->toselect();break;
+			case 4:$this->toselect();
 		}
 	}
 }
-ini_set("display_errors","Off");
+//ini_set("display_errors","Off");
 $user_name="caicaibi";
-$test= new controller($user_name);
-if($_GET['num']==""){
-	$test->operation(4);
+$test= new diarycontroller($user_name);
+if($_GET['num']){
+	$test->operation($_GET['num']);
 }else{
-$test->operation($_GET['num']);
+	$test->operation(4);
 }
 ?>
