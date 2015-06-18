@@ -1,55 +1,61 @@
 <?php
-
-class connect{
-	
-	public function LINK(){
-		$LINK= new PDO('mysql:host=localhost;dbname=Exam','root','');
-		$LINK-> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-		$LINK-> exec("set names utf8");
-		return $LINK;
+class operation extends config{
+	private $table_name = "diary";
+	private $line_name;
+	private $user_name;
+	private $value;
+	private $spare;
+	/*传参*/
+	public function __construct($user_name,$value,$line_name,$table_name,$spare){
+		$this->user_name = $user_name;
+		$this->value = $value;
+		$this->line_name = $line_name;
+		$this->table_name =$table_name;
+		$this->spare = $spare; 
 	}
-}
 
-class operation extends connect{
-
-	private $ComeIn;
-	private $;
-
-	//SQL 增
-	public function add($table_name,$line_name,$value){
+	//SQL 增 
+	private function add(){
+		$table_name = $this->table_name;
+		$line_name  = $this->line_name;
+		$value = $this->value;
 		$sql = "INSERT INTO $table_name($line_name) values ($value) ";
 		$this->LINK()->exec($sql);
 	}
 
-	//SQL 删
-	public function delete($value,$table_name){
-		$sql = "DELETE $this->value FROM $this->table_name ";
+	//SQL 删  根据ID
+	private function delete(){
+		$table_name = $this->table_name;
+		$value = $this->value;
+		$sql = "DELETE  FROM $table_name where ID = $value";
 		$this->LINK()->exec($sql);
+		echo "success!";
 	}
 
-	//SQL 改
-	public function update($table_name,$value,$old_value){
-		$sql = "UPDATE $table_name set $new_value where $old_value";
+	//SQL 改 根据ID
+	private function update(){
+		$table_name = $this->table_name;
+		$value = $this->value;
+		$sql = "UPDATE $table_name set $new_value where ID=$value";
 		$res = $this->LINK()->exec($sql);
 	}
 
-	//SQL 查
-	public function select($table_name,$value){
-		$sql = "SELECT * from $table_name where (user_password='$value')";
+	//SQL 查 根据用户名 一些情况下，调用分页类取代这个
+	private function select(){
+		$table_name = $this->table_name;
+		$user_name = $this->user_name;
+		$sql = "SELECT * from $table_name where user_name = $user_name";
 		$res = $this->LINK()->prepare($sql);
 		$res -> execute();
-		return $all = $res->fetchAll(PDO::FETCH_ASSOC);
+		 $all = $res->fetchAll(PDO::FETCH_ASSOC);
 	}
-
-	//SQL 登陆查
-	public function selectUser($user_name,$user_password){
-		$sql = "SELECT * from login where (user_name='$user_name' and user_password='$user_password')";
-		$res = $this->LINK()->prepare($sql);
-		$res -> execute();
-		if($show = $res->fetchAll(PDO::FETCH_ASSOC))
-			return 1;
+	public function show($values){
+		switch ($values){
+		case 1: $this->add();break;
+		case 2: $this->delete();break;
+		case 3: $this->update();break;
+		case 4: $this->select();break;
+	}
 	}
 }
-//$test = new connect();
-//$test->LINK();
 ?>

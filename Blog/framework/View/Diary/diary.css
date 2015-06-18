@@ -1,0 +1,72 @@
+/*头部*/
+body{
+	background-color: rgb(115,180,192);
+	margin:0px;
+}
+.boothead{
+	background-color: red;
+	height:100px;
+	display:block;
+}
+.boothead img{
+	margin-top:7.5px;
+	margin-left: 20px;
+	clear:both;
+}
+.boothead_href{
+	display:inline;
+	margin-left:10px;
+
+}
+.boothead a{
+	margin-left: 10px;
+	text-decoration: none;
+}
+.boothead_form{
+	text-decoration: none;
+}
+/*diary*/
+.ShowDiary{
+	/*background-color: black;*/
+}
+.WriteDiary{
+	display: none;
+}
+.write{
+	background-color: rgb(97,189,217);
+	width: 100px;
+	height: 30px;
+	position: relative;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	line-height: 30px;
+	overflow: hidden;
+	margin-top:20px; 
+}
+/*写日志界面的class*/
+.form{
+	text-align: center;
+}
+.title{
+	margin-top:20px;
+    width: 500px;
+    height: 50px;
+    font-size: 30px;
+}
+.message{
+	margin-top:20px;
+    width: 700px;
+    height: 360px;
+    font-size: 20px;
+    resize: none;
+}
+.put{
+	width: 80px;
+	height: 25px;
+	background-color: rgb(92,170,230);
+	text-decoration: none;
+	line-height: 25px;
+	color: white;
+	text-align: center;
+}

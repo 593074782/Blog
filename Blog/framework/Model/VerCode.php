@@ -7,12 +7,12 @@ class VerCode{
 	private $img; //背景
 	private $length = 5; //验证码个数
 	private $fontsize = 20;//字体大小
-	private $font = 'simkai.ttf';//字体
+	private $font = '../../bin/font/ARCENA.ttf';//字体 注意自己字体的路径 -----------------------------
 	private $width = 120; //背景框宽度
 	private $height = 30; //背景框高度
 	private $color;
 
-	/*生成背景+输出*/
+	/*生成背景*/
 	private function bg(){
 		$this->img = imagecreatetruecolor($this->width,$this->height);    //创建真彩图像资源
 		$color = imagecolorAllocate($this->img,mt_rand(157, 255),mt_rand(157, 255),mt_rand(157, 255));   //分配一个灰色
@@ -22,8 +22,8 @@ class VerCode{
 	/*生成验证码*/
 	private function word(){
 		for($i=0 ; $i<$this->length ; $i++){
-			$this->word .= $this->db[mt_rand(0,61)];
-		}
+			$this->word .= $this->db[rand(0,61)];
+		};
 		return $this->word;
 	}
 
@@ -41,9 +41,9 @@ class VerCode{
 					mt_rand(-45, 45), 		//旋转角度
 					$x * $i + mt_rand(1, 5),//x轴
 					$this->height / 2 + 10, //y轴 被绘制字符串的第一个字符的基线点
-					$this->font,			//怎样的字体（需有字体库）
 					$this->color, 			//字的颜色 可以随机
-					$this->db[$i]			//每次取出一个文字
+					$this->font,			//怎样的字体（需有字体库）
+					$this->word[$i]			//每次取出一个文字
 				);
 			}
 		}
@@ -68,7 +68,7 @@ class VerCode{
 		$this->showbg();
 	}
 }
-//$test = new verCode();
-//$test->show()
+$test = new verCode();
+$test->show();
 
 ?>

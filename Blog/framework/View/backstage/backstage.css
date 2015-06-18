@@ -1,0 +1,83 @@
+body{
+	margin:0px;
+	background-color: rgb(115,180,192); 
+}
+.title{
+	margin-left: 0.2%;
+	float:left;
+	width:10%;
+	background-color: red;
+	height:300px;
+}
+.title button{
+	width:90%;
+	margin-left:5%;
+	height:30px;
+	margin-top:10px;
+}
+.allmessage{
+	width:89%;
+	float:right;
+	background: yellow;
+	border:1px solid #000;
+	margin-top: 10px;
+}
+
+/*显示日志*/
+.showtitle{
+	text-align: center;
+	background-color: red;
+	width:50%;
+	height:1000px;
+}
+/*日志标签*/
+.diary_label{
+	float:right;
+	width:4%;
+}
+.diary_label a{
+	width:70%;
+	height:10%;
+	margin-top:50%;
+	font-size: 90%;
+}
+/*写日志*/
+.WriteDiary{
+	display: none;
+}
+.toform{
+	text-align: center;
+}
+.totitle{
+	margin-top:20px;
+    width: 500px;
+    height: 50px;
+    font-size: 30px;
+}
+.tobrief{
+	margin-top:20px;
+    width: 500px;
+    height: 200px;
+    font-size: 20px;
+    resize: none;
+}
+.tomessage{
+	margin-top:20px;
+    width: 700px;
+    height: 360px;
+    font-size: 20px;
+    resize: none;
+}
+.toput{
+	width: 80px;
+	height: 25px;
+	background-color: rgb(92,170,230);
+	text-decoration: none;
+	line-height: 25px;
+	color: white;
+	text-align: center;
+}
+
+.links{
+	
+}

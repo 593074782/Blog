@@ -1,0 +1,39 @@
+/*头部*/
+body{
+	background-color: rgb(115,180,192);
+	margin:0px;
+}
+.boothead{
+	background-color: red;
+	height:100px;
+}
+.boothead img{
+	margin-top:7.5px;
+	margin-left: 20px;
+	clear:both;
+}
+.boothead_href{
+	display:inline;
+	margin-left:10px;
+
+}
+.boothead a{
+	margin-left: 10px;
+	text-decoration: none;
+}
+.boothead_form{
+	text-decoration: none;
+}
+/*main*/
+span{
+	margin-top: 120px;
+	margin-left: 20px;
+}
+.bootbody{
+	width:100px;
+	background-color: black;
+}
+.lable{
+	margin-top: 10px;
+	margin-right: 0px;
+}
