@@ -67,7 +67,19 @@
 		<p>messageboard内容</p>
 	</div>
 	<div class="allmessage" id="album">
-		<p>album内容</p>
+		<div>
+			<form name="frm" method="post" enctype="multipart/form-data" action="../../Controller/uploadphotocontroller.php?num=1">
+      			<font style="letter-spacing:1px" color="#FF0000">*只允许上传jpg|png|gif格式的图片</font><br/><br/>
+      			请选择图片：
+      			<input name='upfile' type='file'/>
+      			<input name="btn" type="submit" value="上传" /><br />
+    		</form>
+		</div>
+		<div>
+			<?php
+			include"../../Controller/albumcontroller.php?num=4";
+			  ?>
+		</div>
 	</div>
 	<div class="allmessage" id="aboutme">
 		<p>aboutme</p>
